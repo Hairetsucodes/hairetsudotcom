@@ -30,6 +30,25 @@ export default function Footer({ isMobile }: FooterProps) {
         </p>
         <div className={`flex items-center ${isMobile ? "gap-4" : "gap-6"}`}>
           <a
+            href="https://x.com/hairetsu"
+            className={`${isMobile ? "text-xs" : "text-sm"} transition-colors`}
+            style={{
+              color: "var(--taskbar-text)",
+              opacity: 0.5,
+              textDecoration: "none",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.opacity = "1";
+              e.currentTarget.style.color = "var(--color-purple-400)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.opacity = "0.5";
+              e.currentTarget.style.color = "var(--taskbar-text)";
+            }}
+          >
+            ↗ X
+          </a>
+          <a
             href="https://www.instagram.com/hairetsu/"
             className={`${isMobile ? "text-xs" : "text-sm"} transition-colors`}
             style={{
