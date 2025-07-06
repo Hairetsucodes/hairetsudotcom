@@ -45,6 +45,7 @@ export function MusicPlayerApp() {
   const [shouldAutoPlay, setShouldAutoPlay] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const autoPlayRef = useRef<boolean>(false); // Use ref to avoid race conditions
 
   // Fetch user's tracks from local music files
   const fetchTracks = useCallback(async () => {
@@ -130,20 +131,49 @@ export function MusicPlayerApp() {
       ? Math.floor(Math.random() * tracks.length)
       : (currentSong + 1) % tracks.length;
 
+    console.log("=== NEXT BUTTON CLICKED ===");
     console.log("Next track:", nextIndex, tracks[nextIndex]?.title);
+    console.log("Setting autoPlayRef to: true");
+
+    // Stop current audio if playing
+    if (audioRef.current) {
+      console.log("Pausing current audio for next...");
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+
+    // Set auto-play flag and reset UI
+    autoPlayRef.current = true;
     setCurrentSong(nextIndex);
     setCurrentTime(0);
-    setIsPlaying(false);
+    setIsPlaying(false); // Will be set to true when auto-play works
+    setShouldAutoPlay(true);
+    console.log("=== NEXT BUTTON END ===");
   }, [tracks, currentSong, shuffle]);
 
   const handlePrevious = useCallback(() => {
     if (tracks.length === 0) return;
 
     const prevIndex = (currentSong - 1 + tracks.length) % tracks.length;
+
+    console.log("=== PREVIOUS BUTTON CLICKED ===");
     console.log("Previous track:", prevIndex, tracks[prevIndex]?.title);
+    console.log("Setting autoPlayRef to: true");
+
+    // Stop current audio if playing
+    if (audioRef.current) {
+      console.log("Pausing current audio for previous...");
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+
+    // Set auto-play flag and reset UI
+    autoPlayRef.current = true;
     setCurrentSong(prevIndex);
     setCurrentTime(0);
-    setIsPlaying(false);
+    setIsPlaying(false); // Will be set to true when auto-play works
+    setShouldAutoPlay(true);
+    console.log("=== PREVIOUS BUTTON END ===");
   }, [tracks, currentSong]);
 
   const formatTime = (milliseconds: number) => {
@@ -193,11 +223,30 @@ export function MusicPlayerApp() {
   const handleTrackSelect = (index: number) => {
     if (tracks.length === 0) return;
 
+    console.log("=== TRACK SELECTION START ===");
     console.log("Track selected:", index, tracks[index]?.title);
-    setCurrentSong(index);
+    console.log("Current shouldAutoPlay before:", shouldAutoPlay);
+    console.log("Setting autoPlayRef to: true");
+
+    // Stop current audio if playing (but don't destroy the reference yet)
+    if (audioRef.current) {
+      console.log("Pausing current audio...");
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+
+    // Reset UI state immediately
+    setIsPlaying(false);
     setCurrentTime(0);
-    setShouldAutoPlay(true); // Auto-play when track is selected
-    setIsPlaying(false); // Will be set to true when audio starts playing
+
+    // Set auto-play flag in ref (won't change during async operations)
+    autoPlayRef.current = true;
+
+    // Set new track and request auto-play
+    console.log("Setting currentSong to:", index);
+    setCurrentSong(index);
+    setShouldAutoPlay(true); // Keep this for useEffect dependency
+    console.log("=== TRACK SELECTION END ===");
   };
 
   // Fetch tracks on component mount
@@ -208,83 +257,176 @@ export function MusicPlayerApp() {
 
   // Initialize audio element when tracks change (now after handleNext is defined)
   useEffect(() => {
+    console.log("=== AUDIO SETUP USEEFFECT ===");
+    console.log(
+      "Tracks length:",
+      tracks.length,
+      "Current song:",
+      currentSong,
+      "shouldAutoPlay:",
+      shouldAutoPlay
+    );
+    console.log("autoPlayRef.current:", autoPlayRef.current);
+    console.log("This useEffect was triggered by a dependency change");
+
     if (tracks.length > 0 && currentSong < tracks.length) {
       const track = tracks[currentSong];
+      const shouldAttemptAutoPlay = autoPlayRef.current; // Use ref instead of state
 
-      // Cleanup previous audio
+      console.log(
+        `Setting up audio for: ${track.title}, shouldAutoPlay: ${shouldAttemptAutoPlay}`
+      );
+
+      // Ensure no previous audio is playing (extra safety)
       if (audioRef.current) {
+        console.log("Cleaning up previous audio element...");
         audioRef.current.pause();
-        audioRef.current.removeEventListener("loadedmetadata", () => {});
-        audioRef.current.removeEventListener("timeupdate", () => {});
-        audioRef.current.removeEventListener("ended", () => {});
-        audioRef.current.removeEventListener("error", () => {});
+        audioRef.current.currentTime = 0;
+        audioRef.current.src = "";
+        audioRef.current.load();
+        audioRef.current = null;
       }
 
-      const audio = new Audio(track.audio_url);
+      // Create completely new audio element
+      console.log(`Creating new audio element for: ${track.title}`);
+      const audio = new Audio();
+      audio.preload = "auto";
+      audio.src = track.audio_url;
       audioRef.current = audio;
 
-      // Set initial volume
+      // Set initial volume and position
       audio.volume = volume / 100;
+      audio.currentTime = 0;
 
       // Event listeners
       const onLoadedMetadata = () => {
         setDuration(audio.duration * 1000); // Convert to milliseconds
-        console.log(`Loaded ${track.title}, duration: ${audio.duration}s`);
+        console.log(
+          `Loaded metadata for ${track.title}, duration: ${audio.duration}s`
+        );
+      };
 
-        // Auto-play if requested
-        if (shouldAutoPlay) {
-          audio
-            .play()
-            .then(() => {
-              setIsPlaying(true);
-              setShouldAutoPlay(false);
-              console.log("Auto-playing selected track");
-            })
-            .catch((err) => {
-              console.error("Auto-play failed:", err);
-              setError("Auto-play failed. Please try playing manually.");
-              setShouldAutoPlay(false);
-            });
+      const onLoadedData = () => {
+        console.log(`=== AUDIO LOADED ===`);
+        console.log(
+          `Audio data loaded for: ${track.title}, shouldAttemptAutoPlay: ${shouldAttemptAutoPlay}`
+        );
+        console.log(`autoPlayRef.current at load time: ${autoPlayRef.current}`);
+
+        // Auto-play if requested (check ref, not state)
+        if (shouldAttemptAutoPlay) {
+          console.log("Auto-play REQUESTED - attempting...");
+          // Reset the flag immediately to prevent double-play
+          autoPlayRef.current = false;
+          setShouldAutoPlay(false);
+
+          // Try immediate play first
+          console.log("Attempting immediate play...");
+          const playPromise = audio.play();
+
+          if (playPromise !== undefined) {
+            playPromise
+              .then(() => {
+                console.log("AUTO-PLAY SUCCESSFUL!");
+                setIsPlaying(true);
+              })
+              .catch((err) => {
+                console.error("Auto-play failed:", err);
+                console.log(
+                  "Auto-play blocked by browser - trying with delay..."
+                );
+
+                // Try with a delay as fallback
+                setTimeout(() => {
+                  console.log("Attempting delayed play...");
+                  audio.currentTime = 0;
+                  const delayedPromise = audio.play();
+                  if (delayedPromise !== undefined) {
+                    delayedPromise
+                      .then(() => {
+                        console.log("DELAYED PLAY SUCCESSFUL!");
+                        setIsPlaying(true);
+                      })
+                      .catch((delayedErr) => {
+                        console.error("Delayed play also failed:", delayedErr);
+                        setIsPlaying(false);
+                      });
+                  }
+                }, 100);
+              });
+          } else {
+            // Fallback for older browsers
+            console.log("Play promise not supported, setting playing state");
+            setIsPlaying(true);
+          }
+        } else {
+          console.log(
+            "Auto-play NOT requested for this track (shouldAttemptAutoPlay was false)"
+          );
+          console.log(
+            "To enable auto-play, click on a track in the playlist below"
+          );
         }
+        console.log(`=== AUDIO LOADED END ===`);
       };
 
       const onTimeUpdate = () => {
-        setCurrentTime(audio.currentTime * 1000); // Convert to milliseconds
+        // Only update if this is still the current audio
+        if (audioRef.current === audio) {
+          setCurrentTime(audio.currentTime * 1000); // Convert to milliseconds
+        }
       };
 
       const onEnded = () => {
-        setIsPlaying(false);
-        if (!repeat) {
-          handleNext();
-        } else {
-          audio.currentTime = 0;
-          audio.play();
+        // Only handle if this is still the current audio
+        if (audioRef.current === audio) {
+          setIsPlaying(false);
+          if (!repeat) {
+            handleNext();
+          } else {
+            audio.currentTime = 0;
+            audio.play();
+          }
         }
       };
 
       const onError = (e: Event) => {
         console.error("Audio error:", e);
         setError("Failed to load audio file");
+        autoPlayRef.current = false; // Reset ref on error
         setShouldAutoPlay(false);
+        setIsPlaying(false);
       };
 
       audio.addEventListener("loadedmetadata", onLoadedMetadata);
+      audio.addEventListener("loadeddata", onLoadedData);
       audio.addEventListener("timeupdate", onTimeUpdate);
       audio.addEventListener("ended", onEnded);
       audio.addEventListener("error", onError);
 
       // Load the audio
+      console.log("Loading audio...");
       audio.load();
 
       // Cleanup function
       return () => {
+        console.log(`Cleaning up audio for: ${track.title}`);
         audio.removeEventListener("loadedmetadata", onLoadedMetadata);
+        audio.removeEventListener("loadeddata", onLoadedData);
         audio.removeEventListener("timeupdate", onTimeUpdate);
         audio.removeEventListener("ended", onEnded);
         audio.removeEventListener("error", onError);
+        audio.pause();
+        audio.currentTime = 0;
+        audio.src = "";
+        audio.load();
       };
+    } else {
+      console.log(
+        "Not setting up audio - tracks not ready or invalid currentSong"
+      );
     }
-  }, [tracks, currentSong, repeat, handleNext, shouldAutoPlay]); // Added shouldAutoPlay to dependencies
+  }, [tracks, currentSong, repeat, handleNext]); // Removed shouldAutoPlay from dependencies to prevent double-firing
 
   // Separate useEffect for volume changes
   useEffect(() => {

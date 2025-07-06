@@ -205,7 +205,7 @@ export function StartMenu({
         trackRecentApp("music-player");
         createWindow("Music Player", MusicPlayerApp, {
           width: 450,
-          height: 700,
+          height: 800,
         });
       },
       category: "Multimedia",
