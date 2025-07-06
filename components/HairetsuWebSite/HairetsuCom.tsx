@@ -170,29 +170,20 @@ export default function HairetsuCom() {
       {/* Hero Section */}
       <section
         className={`${
-          isMobile ? "px-8 py-4" : isTablet ? "px-8 py-4" : "px-8 py-4"
+          isMobile ? "px-4 py-8" : isTablet ? "px-6 py-12" : "px-8 py-16"
         }`}
       >
-        <div
-          className="max-w-6xl mx-auto"
-          style={{ maxWidth: "100%", overflow: "hidden" }}
-        >
+        <div className="max-w-6xl mx-auto">
           <div
             className={`grid ${isDesktop ? "grid-cols-2" : "grid-cols-1"} ${
               isMobile ? "gap-6" : isTablet ? "gap-8" : "gap-12"
             } items-center`}
-            style={{ maxWidth: "100%", overflow: "hidden" }}
           >
             {/* Text Content */}
             <div
               className={`${
                 isMobile ? "order-2" : isDesktop ? "order-1" : "order-2"
               } ${isMobile || isTablet ? "text-center" : "text-left"}`}
-              style={{
-                maxWidth: "100%",
-                overflow: "hidden",
-                wordWrap: "break-word",
-              }}
             >
               <p
                 className={`${
@@ -265,7 +256,6 @@ export default function HairetsuCom() {
                     ? "flex-row gap-4 justify-center"
                     : "flex-row gap-4 justify-start"
                 }`}
-                style={{ maxWidth: "100%", overflow: "hidden" }}
               >
                 <button
                   className={`group flex items-center justify-center gap-3 ${
@@ -324,9 +314,8 @@ export default function HairetsuCom() {
               className={`${
                 isMobile ? "order-1" : isDesktop ? "order-2" : "order-1"
               } flex justify-center`}
-              style={{ maxWidth: "100%", overflow: "hidden" }}
             >
-              <div className="relative" style={{ maxWidth: "100%" }}>
+              <div className="relative">
                 <Image
                   src="/image3.jpeg"
                   alt="Thomas Whidden"
@@ -359,7 +348,6 @@ export default function HairetsuCom() {
           </div>
         </div>
       </section>
-
       {/* Portfolio */}
       <section
         id="portfolio"
