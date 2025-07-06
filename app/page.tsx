@@ -6,11 +6,11 @@ import {
   Terminal,
   Calculator,
   FileText,
-  Menu,
   Volume2,
   Wifi,
   Battery,
   Globe,
+  Grid3X3,
 } from "lucide-react";
 
 // Components and Types
@@ -299,19 +299,28 @@ function LinuxDesktopContent() {
         <div className="relative">
           <button
             onClick={() => setShowStartMenu(!showStartMenu)}
-            className="h-9 px-4 text-white rounded-lg flex items-center gap-2 text-sm font-medium shadow-lg transition-all duration-200 hover:shadow-xl hover:scale-105"
+            className="h-9 px-3 text-sm font-medium flex items-center gap-2 transition-all duration-200 border"
             style={{
-              background: `linear-gradient(135deg, var(--button-start), var(--button-end))`,
+              backgroundColor: showStartMenu
+                ? "var(--taskbar-hover)"
+                : "var(--taskbar-bg)",
+              color: "var(--taskbar-text)",
+              borderColor: "var(--taskbar-border)",
+              borderRadius: "4px",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = `linear-gradient(135deg, var(--button-hover-start), var(--button-hover-end))`;
+              if (!showStartMenu) {
+                e.currentTarget.style.backgroundColor = "var(--taskbar-hover)";
+              }
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = `linear-gradient(135deg, var(--button-start), var(--button-end))`;
+              if (!showStartMenu) {
+                e.currentTarget.style.backgroundColor = "var(--taskbar-bg)";
+              }
             }}
           >
-            <Menu size={16} />
-            Start
+            <Grid3X3 size={16} />
+            Applications
           </button>
 
           {showStartMenu && (

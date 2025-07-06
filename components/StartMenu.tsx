@@ -289,7 +289,7 @@ export function StartMenu({
   return (
     <div
       ref={menuRef}
-      className="absolute bottom-12 left-0 w-96 bg-slate-900/95 backdrop-blur-sm border border-slate-600/30 rounded-xl shadow-2xl z-50"
+      className="absolute bottom-12 left-0 w-96 bg-slate-900/95 backdrop-blur-sm border border-slate-600/30 rounded-xl shadow-2xl z-[9999]"
       onClick={(e) => e.stopPropagation()}
     >
       {/* Header */}
