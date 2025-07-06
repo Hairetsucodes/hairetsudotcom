@@ -62,7 +62,7 @@ export function StartMenu({
   BrowserApp,
 }: StartMenuProps) {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory] = useState("All");
   const [recentApps, setRecentApps] = useState<string[]>([]);
   const menuRef = React.useRef<HTMLDivElement>(null);
 
@@ -248,15 +248,6 @@ export function StartMenu({
       },
       category: "Internet",
     },
-  ];
-
-  const categories = [
-    "All",
-    "Recent",
-    "Accessories",
-    "System",
-    "Multimedia",
-    "Internet",
   ];
 
   const trackRecentApp = (appId: string) => {
