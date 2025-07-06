@@ -170,7 +170,7 @@ export default function HairetsuCom() {
       {/* Hero Section */}
       <section
         className={`${
-          isMobile ? "px-4 py-4" : isTablet ? "px-4 py-4" : "px-4 py-4"
+          isMobile ? "px-8 py-4" : isTablet ? "px-8 py-4" : "px-8 py-4"
         }`}
       >
         <div
