@@ -60,7 +60,7 @@ export default function HairetsuCom() {
       {/* Navigation */}
       <nav
         className={`flex items-center justify-between ${
-          isMobile ? "p-3" : "p-4"
+          isMobile ? "p-3" : "py-2 px-8"
         }`}
         style={{
           borderBottom: `1px solid var(--window-border)`,
@@ -170,7 +170,7 @@ export default function HairetsuCom() {
       {/* Hero Section */}
       <section
         className={`${
-          isMobile ? "px-4 py-8" : isTablet ? "px-6 py-12" : "px-8 py-16"
+          isMobile ? "px-4 py-4" : isTablet ? "px-4 py-4" : "px-4 py-4"
         }`}
       >
         <div
@@ -334,11 +334,11 @@ export default function HairetsuCom() {
                     isMobile
                       ? "w-48 h-48"
                       : isTablet
-                      ? "w-64 h-64"
-                      : "w-96 h-96"
+                      ? "w-48 h-48"
+                      : "w-64 h-64"
                   } rounded-full border-2 border-gray-200 object-cover shadow-lg`}
-                  width={384}
-                  height={384}
+                  width={128}
+                  height={128}
                   style={{
                     filter: "grayscale(20%)",
                     transition: "all 0.3s ease",

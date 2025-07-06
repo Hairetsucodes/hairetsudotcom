@@ -289,7 +289,7 @@ export function StartMenu({
   return (
     <div
       ref={menuRef}
-      className="absolute bottom-12 left-0 w-96 bg-slate-900/95 backdrop-blur-sm border border-slate-600/30 rounded-xl shadow-2xl z-[9999]"
+      className="absolute bottom-12 left-0 w-96 bg-slate-900/95 backdrop-blur-sm border border-slate-600/30 rounded-xl shadow-2xl z-[10000]"
       onClick={(e) => e.stopPropagation()}
     >
       {/* Header */}
@@ -299,7 +299,7 @@ export function StartMenu({
             <User size={20} className="text-white" />
           </div>
           <div>
-            <div className="text-slate-200 font-semibold">User</div>
+            <div className="text-slate-200 font-semibold">Hairetsu</div>
             <div className="text-slate-400 text-sm">Linux Desktop</div>
           </div>
         </div>
@@ -317,25 +317,6 @@ export function StartMenu({
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-10 pr-4 py-2 bg-slate-800/50 border border-slate-600/30 rounded-lg text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm"
           />
-        </div>
-      </div>
-
-      {/* Categories */}
-      <div className="p-2 border-b border-slate-600/30">
-        <div className="flex flex-wrap gap-1">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-3 py-1 rounded-lg text-xs font-medium transition-all duration-200 ${
-                selectedCategory === category
-                  ? "bg-blue-600 text-white"
-                  : "text-slate-400 hover:text-slate-200 hover:bg-slate-700/50"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
         </div>
       </div>
 

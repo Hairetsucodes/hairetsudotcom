@@ -246,7 +246,7 @@ export function WindowComponent({
               e.stopPropagation();
               onMinimize();
             }}
-            className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-lg"
+            className="w-[1rem] h-[1rem] rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-lg"
             style={{
               backgroundColor: "var(--color-amber-500)",
               opacity: 0.8,
@@ -265,7 +265,7 @@ export function WindowComponent({
               e.stopPropagation();
               onMaximize();
             }}
-            className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-lg"
+            className="w-[1rem] h-[1rem] rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-lg"
             style={{
               backgroundColor: "var(--color-emerald-500)",
               opacity: 0.8,
@@ -287,7 +287,7 @@ export function WindowComponent({
               e.stopPropagation();
               onClose();
             }}
-            className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-lg"
+            className="w-[1rem] h-[1rem] rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-lg"
             style={{
               backgroundColor: "var(--color-red-500)",
               opacity: 0.8,

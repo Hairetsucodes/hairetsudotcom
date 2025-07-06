@@ -62,7 +62,7 @@ function LinuxDesktopContent() {
           isMinimized: false,
           isMaximized: false,
           position: { x: 60, y: 50 },
-          size: { width: 1000, height: 800 },
+          size: { width: 1000, height: 900 },
           zIndex: 101,
         };
         setWindows([newWindow]);
@@ -198,7 +198,7 @@ function LinuxDesktopContent() {
       label: "Calculator",
       icon: Calculator,
       action: () =>
-        createWindow("Calculator", CalculatorApp, { width: 300, height: 500 }),
+        createWindow("Calculator", CalculatorApp, { width: 300, height: 610 }),
     },
     {
       id: "text-editor",
@@ -212,7 +212,7 @@ function LinuxDesktopContent() {
       label: "Browser",
       icon: Globe,
       action: () =>
-        createWindow("Browser", BrowserApp, { width: 1000, height: 800 }),
+        createWindow("Browser", BrowserApp, { width: 1000, height: 900 }),
     },
   ];
 

@@ -217,6 +217,29 @@
     box-sizing: border-box;
   }
 
+  /* Chrome-specific fixes for calculator consistency */
+  @supports (-webkit-appearance: none) {
+    /* Chrome font smoothing for calculator buttons */
+    button {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Chrome grid layout consistency */
+    .grid {
+      display: grid;
+      grid-gap: inherit;
+    }
+
+    /* Chrome button rendering consistency */
+    button[style*="linear-gradient"] {
+      background-clip: padding-box;
+      -webkit-background-clip: padding-box;
+      border: 0;
+      outline: none;
+    }
+  }
+
   /* Improve responsiveness for viewport changes */
   @media (max-width: 768px) {
     body {

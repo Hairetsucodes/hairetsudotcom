@@ -8,8 +8,6 @@ import {
   Lock,
   Star,
   Menu,
-  Plus,
-  X,
 } from "lucide-react";
 import HairetsuCom from "../HairetsuWebSite/HairetsuCom";
 
@@ -30,7 +28,7 @@ export function BrowserApp({
   const [tabs, setTabs] = useState<Tab[]>([
     { id: "1", title: "Hairetsu", url: initialUrl, favicon: "🌟" },
   ]);
-  const [activeTabId, setActiveTabId] = useState("1");
+  const [activeTabId] = useState("1");
   const [urlInput, setUrlInput] = useState(initialUrl);
   const [isLoading, setIsLoading] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -60,29 +58,6 @@ export function BrowserApp({
     setTabs((prev) =>
       prev.map((tab) => (tab.id === activeTabId ? { ...tab, ...updates } : tab))
     );
-  };
-
-  const createNewTab = () => {
-    const newId = (tabs.length + 1).toString();
-    const newTab: Tab = {
-      id: newId,
-      title: "New Tab",
-      url: "https://hairetsu.com",
-      favicon: "🌟",
-    };
-    setTabs((prev) => [...prev, newTab]);
-    setActiveTabId(newId);
-    setUrlInput("https://hairetsu.com");
-  };
-
-  const closeTab = (tabId: string) => {
-    if (tabs.length === 1) return; // Don't close the last tab
-
-    setTabs((prev) => prev.filter((tab) => tab.id !== tabId));
-    if (activeTabId === tabId) {
-      const remainingTabs = tabs.filter((tab) => tab.id !== tabId);
-      setActiveTabId(remainingTabs[0]?.id || "1");
-    }
   };
 
   const goHome = () => {
@@ -117,59 +92,6 @@ export function BrowserApp({
         maxHeight: "100%",
       }}
     >
-      {/* Tab Bar */}
-      <div
-        className="flex items-center border-b flex-shrink-0"
-        style={{
-          backgroundColor: "var(--taskbar-bg)",
-          borderColor: "var(--window-border)",
-          height: "auto",
-        }}
-      >
-        <div className="flex-1 flex items-center overflow-hidden">
-          {tabs.map((tab) => (
-            <div
-              key={tab.id}
-              className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 max-w-32 sm:max-w-48 cursor-pointer transition-colors ${
-                activeTabId === tab.id ? "bg-opacity-100" : "bg-opacity-50"
-              }`}
-              style={{
-                backgroundColor:
-                  activeTabId === tab.id
-                    ? "var(--window-bg)"
-                    : "var(--taskbar-hover)",
-                borderRight: `1px solid var(--window-border)`,
-                minWidth: "0",
-              }}
-              onClick={() => setActiveTabId(tab.id)}
-            >
-              <span className="text-xs sm:text-sm">{tab.favicon || "🌐"}</span>
-              <span className="text-xs sm:text-sm truncate flex-1">
-                {tab.title}
-              </span>
-              {tabs.length > 1 && (
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    closeTab(tab.id);
-                  }}
-                  className="p-1 hover:bg-red-500 hover:text-white rounded"
-                >
-                  <X size={10} />
-                </button>
-              )}
-            </div>
-          ))}
-        </div>
-        <button
-          onClick={createNewTab}
-          className="p-2 hover:opacity-80 transition-opacity"
-          style={{ color: "var(--taskbar-text)" }}
-        >
-          <Plus size={16} />
-        </button>
-      </div>
-
       {/* Navigation Bar */}
       <div
         className="flex items-center gap-1 sm:gap-2 p-2 sm:p-3 border-b flex-shrink-0"
