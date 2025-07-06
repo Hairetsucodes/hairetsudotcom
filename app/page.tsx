@@ -62,7 +62,7 @@ function LinuxDesktopContent() {
           isMinimized: false,
           isMaximized: false,
           position: { x: 60, y: 50 },
-          size: { width: 1000, height: 900 },
+          size: { width: 1200, height: 900 },
           zIndex: 101,
         };
         setWindows([newWindow]);
