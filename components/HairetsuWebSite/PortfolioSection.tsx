@@ -127,106 +127,6 @@ export default function PortfolioSection({
           </div>
 
           {/* Decipher */}
-          <div
-            className="p-4 sm:p-6 rounded-lg border relative transition-all duration-200 hover:shadow-sm"
-            style={{
-              backgroundColor: "var(--window-bg)",
-              borderColor: "var(--window-border)",
-            }}
-          >
-            <div className="absolute top-2 left-0 right-0 flex justify-center">
-              <span
-                className="text-xs px-2 py-1 rounded-full"
-                style={{
-                  backgroundColor: "var(--taskbar-text)",
-                  color: "var(--window-bg)",
-                  fontSize: "0.6rem",
-                  opacity: 0.5,
-                }}
-              >
-                Under Development
-              </span>
-            </div>
-            <div className="flex items-center justify-between mb-2 sm:mb-3">
-              <a
-                href="https://decipher.hairetsu.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-base sm:text-lg font-medium transition-colors hover:underline"
-                style={{
-                  color: "var(--taskbar-text)",
-                }}
-              >
-                Decipher
-              </a>
-              <a
-                href="https://decipher.hairetsu.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs px-2 py-1 rounded transition-all duration-200 hover:opacity-70"
-                style={{
-                  backgroundColor: "var(--taskbar-text)",
-                  color: "var(--window-bg)",
-                  opacity: 0.7,
-                }}
-              >
-                →
-              </a>
-            </div>
-            <p
-              className="text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4"
-              style={{
-                color: "var(--taskbar-text)",
-                opacity: 0.7,
-              }}
-            >
-              A robust server-side tool protecting high-traffic applications
-              from fraud and spam. Features real-time monitoring and custom ML
-              models, handling millions of daily requests.
-            </p>
-            <div className="flex flex-wrap gap-1 sm:gap-2">
-              <span
-                className="px-2 py-1 text-xs rounded-full"
-                style={{
-                  backgroundColor: "var(--taskbar-text)",
-                  color: "var(--window-bg)",
-                  opacity: 0.8,
-                }}
-              >
-                Python
-              </span>
-              <span
-                className="px-2 py-1 text-xs rounded-full"
-                style={{
-                  backgroundColor: "var(--taskbar-text)",
-                  color: "var(--window-bg)",
-                  opacity: 0.8,
-                }}
-              >
-                Next.js
-              </span>
-              <span
-                className="px-2 py-1 text-xs rounded-full"
-                style={{
-                  backgroundColor: "var(--taskbar-text)",
-                  color: "var(--window-bg)",
-                  opacity: 0.8,
-                }}
-              >
-                Elixir
-              </span>
-              <span
-                className="px-2 py-1 text-xs rounded-full"
-                style={{
-                  backgroundColor: "var(--taskbar-text)",
-                  color: "var(--window-bg)",
-                  opacity: 0.8,
-                }}
-              >
-                MySQL
-              </span>
-            </div>
-          </div>
 
           {/* Hiring.fm */}
           <div
@@ -493,97 +393,205 @@ export default function PortfolioSection({
               borderColor: "var(--window-border)",
             }}
           >
-            <div className="absolute top-2 left-0 right-0 flex justify-center">
+            <div className="absolute top-3 left-0 right-0 flex justify-center">
               <span
-                className="text-xs px-2 py-1 rounded-full"
+                className="text-xs px-3 py-1 rounded-full border backdrop-blur-sm"
                 style={{
-                  backgroundColor: "var(--taskbar-text)",
-                  color: "var(--window-bg)",
-                  fontSize: "0.6rem",
-                  opacity: 0.5,
+                  backgroundColor: "rgba(255, 165, 0, 0.15)",
+                  borderColor: "rgba(255, 165, 0, 0.3)",
+                  color: "var(--taskbar-text)",
+                  fontSize: "0.65rem",
+                  fontWeight: "500",
+                  opacity: 0.9,
                 }}
               >
                 Under Development
               </span>
             </div>
-            <div className="flex items-center justify-between mb-2 sm:mb-3">
-              <a
-                href="https://www.vocals.dev/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-base sm:text-lg font-medium transition-colors hover:underline"
+            <div className="pt-6">
+              <div className="flex items-center justify-between mb-2 sm:mb-3">
+                <a
+                  href="https://www.vocals.dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-base sm:text-lg font-medium transition-colors hover:underline"
+                  style={{
+                    color: "var(--taskbar-text)",
+                  }}
+                >
+                  Vocals.dev
+                </a>
+                <a
+                  href="https://www.vocals.dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs px-2 py-1 rounded transition-all duration-200 hover:opacity-70"
+                  style={{
+                    backgroundColor: "var(--taskbar-text)",
+                    color: "var(--window-bg)",
+                    opacity: 0.7,
+                  }}
+                >
+                  →
+                </a>
+              </div>
+              <p
+                className="text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4"
                 style={{
                   color: "var(--taskbar-text)",
-                }}
-              >
-                Vocals.dev
-              </a>
-              <a
-                href="https://www.vocals.dev/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs px-2 py-1 rounded transition-all duration-200 hover:opacity-70"
-                style={{
-                  backgroundColor: "var(--taskbar-text)",
-                  color: "var(--window-bg)",
                   opacity: 0.7,
                 }}
               >
-                →
-              </a>
+                Voice AI platform for developers. Build custom voice chatbots
+                and interactive applications in minutes with SDK kits and
+                developer-focused tools. Currently in closed beta.
+              </p>
+              <div className="flex flex-wrap gap-1 sm:gap-2">
+                <span
+                  className="px-2 py-1 text-xs rounded-full"
+                  style={{
+                    backgroundColor: "var(--taskbar-text)",
+                    color: "var(--window-bg)",
+                    opacity: 0.8,
+                  }}
+                >
+                  Voice AI
+                </span>
+                <span
+                  className="px-2 py-1 text-xs rounded-full"
+                  style={{
+                    backgroundColor: "var(--taskbar-text)",
+                    color: "var(--window-bg)",
+                    opacity: 0.8,
+                  }}
+                >
+                  SDK
+                </span>
+                <span
+                  className="px-2 py-1 text-xs rounded-full"
+                  style={{
+                    backgroundColor: "var(--taskbar-text)",
+                    color: "var(--window-bg)",
+                    opacity: 0.8,
+                  }}
+                >
+                  Speech-to-Text
+                </span>
+                <span
+                  className="px-2 py-1 text-xs rounded-full"
+                  style={{
+                    backgroundColor: "var(--taskbar-text)",
+                    color: "var(--window-bg)",
+                    opacity: 0.8,
+                  }}
+                >
+                  Text-to-Speech
+                </span>
+              </div>
             </div>
-            <p
-              className="text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4"
-              style={{
-                color: "var(--taskbar-text)",
-                opacity: 0.7,
-              }}
-            >
-              Voice AI platform for developers. Build custom voice chatbots and
-              interactive applications in minutes with SDK kits and
-              developer-focused tools. Currently in closed beta.
-            </p>
-            <div className="flex flex-wrap gap-1 sm:gap-2">
+          </div>
+          <div
+            className="p-4 sm:p-6 rounded-lg border relative transition-all duration-200 hover:shadow-sm"
+            style={{
+              backgroundColor: "var(--window-bg)",
+              borderColor: "var(--window-border)",
+            }}
+          >
+            <div className="absolute top-3 left-0 right-0 flex justify-center">
               <span
-                className="px-2 py-1 text-xs rounded-full"
+                className="text-xs px-3 py-1 rounded-full border backdrop-blur-sm"
                 style={{
-                  backgroundColor: "var(--taskbar-text)",
-                  color: "var(--window-bg)",
-                  opacity: 0.8,
+                  backgroundColor: "rgba(255, 165, 0, 0.15)",
+                  borderColor: "rgba(255, 165, 0, 0.3)",
+                  color: "var(--taskbar-text)",
+                  fontSize: "0.65rem",
+                  fontWeight: "500",
+                  opacity: 0.9,
                 }}
               >
-                Voice AI
+                Under Development
               </span>
-              <span
-                className="px-2 py-1 text-xs rounded-full"
+            </div>
+            <div className="pt-6">
+              <div className="flex items-center justify-between mb-2 sm:mb-3">
+                <a
+                  href="https://decipher.hairetsu.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-base sm:text-lg font-medium transition-colors hover:underline"
+                  style={{
+                    color: "var(--taskbar-text)",
+                  }}
+                >
+                  Decipher
+                </a>
+                <a
+                  href="https://decipher.hairetsu.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs px-2 py-1 rounded transition-all duration-200 hover:opacity-70"
+                  style={{
+                    backgroundColor: "var(--taskbar-text)",
+                    color: "var(--window-bg)",
+                    opacity: 0.7,
+                  }}
+                >
+                  →
+                </a>
+              </div>
+              <p
+                className="text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4"
                 style={{
-                  backgroundColor: "var(--taskbar-text)",
-                  color: "var(--window-bg)",
-                  opacity: 0.8,
+                  color: "var(--taskbar-text)",
+                  opacity: 0.7,
                 }}
               >
-                SDK
-              </span>
-              <span
-                className="px-2 py-1 text-xs rounded-full"
-                style={{
-                  backgroundColor: "var(--taskbar-text)",
-                  color: "var(--window-bg)",
-                  opacity: 0.8,
-                }}
-              >
-                Speech-to-Text
-              </span>
-              <span
-                className="px-2 py-1 text-xs rounded-full"
-                style={{
-                  backgroundColor: "var(--taskbar-text)",
-                  color: "var(--window-bg)",
-                  opacity: 0.8,
-                }}
-              >
-                Text-to-Speech
-              </span>
+                A robust server-side tool protecting high-traffic applications
+                from fraud and spam. Features real-time monitoring and custom ML
+                models, handling millions of daily requests.
+              </p>
+              <div className="flex flex-wrap gap-1 sm:gap-2">
+                <span
+                  className="px-2 py-1 text-xs rounded-full"
+                  style={{
+                    backgroundColor: "var(--taskbar-text)",
+                    color: "var(--window-bg)",
+                    opacity: 0.8,
+                  }}
+                >
+                  Python
+                </span>
+                <span
+                  className="px-2 py-1 text-xs rounded-full"
+                  style={{
+                    backgroundColor: "var(--taskbar-text)",
+                    color: "var(--window-bg)",
+                    opacity: 0.8,
+                  }}
+                >
+                  Next.js
+                </span>
+                <span
+                  className="px-2 py-1 text-xs rounded-full"
+                  style={{
+                    backgroundColor: "var(--taskbar-text)",
+                    color: "var(--window-bg)",
+                    opacity: 0.8,
+                  }}
+                >
+                  Elixir
+                </span>
+                <span
+                  className="px-2 py-1 text-xs rounded-full"
+                  style={{
+                    backgroundColor: "var(--taskbar-text)",
+                    color: "var(--window-bg)",
+                    opacity: 0.8,
+                  }}
+                >
+                  MySQL
+                </span>
+              </div>
             </div>
           </div>
         </div>
