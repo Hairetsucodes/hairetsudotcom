@@ -401,12 +401,24 @@ export default function HairetsuCom() {
               }}
             >
               <div className="flex items-center justify-between mb-2 sm:mb-3">
-                <h3
-                  className="text-base sm:text-lg font-medium"
-                  style={{ color: "var(--color-purple-400)" }}
+                <a
+                  href="https://notate.hairetsu.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-base sm:text-lg font-medium transition-colors hover:underline"
+                  style={{
+                    color: "var(--color-purple-400)",
+                    textDecoration: "none",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "var(--color-purple-300)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "var(--color-purple-400)";
+                  }}
                 >
                   Notate
-                </h3>
+                </a>
                 <a
                   href="https://notate.hairetsu.com"
                   target="_blank"
@@ -426,7 +438,7 @@ export default function HairetsuCom() {
                       "var(--color-purple-600)";
                   }}
                 >
-                  notate.hairetsu.com →
+                  →
                 </a>
               </div>
               <p
@@ -489,12 +501,24 @@ export default function HairetsuCom() {
               }}
             >
               <div className="flex items-center justify-between mb-2 sm:mb-3">
-                <h3
-                  className="text-base sm:text-lg font-medium"
-                  style={{ color: "var(--color-blue-400)" }}
+                <a
+                  href="https://decipher.hairetsu.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-base sm:text-lg font-medium transition-colors hover:underline"
+                  style={{
+                    color: "var(--color-blue-400)",
+                    textDecoration: "none",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "var(--color-blue-300)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "var(--color-blue-400)";
+                  }}
                 >
                   Decipher
-                </h3>
+                </a>
                 <a
                   href="https://decipher.hairetsu.com"
                   target="_blank"
@@ -514,7 +538,7 @@ export default function HairetsuCom() {
                       "var(--color-blue-600)";
                   }}
                 >
-                  decipher.hairetsu.com →
+                  →
                 </a>
               </div>
               <p
@@ -577,12 +601,24 @@ export default function HairetsuCom() {
               }}
             >
               <div className="flex items-center justify-between mb-2 sm:mb-3">
-                <h3
-                  className="text-base sm:text-lg font-medium"
-                  style={{ color: "var(--color-pink-400)" }}
+                <a
+                  href="https://hiring.fm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-base sm:text-lg font-medium transition-colors hover:underline"
+                  style={{
+                    color: "var(--color-pink-400)",
+                    textDecoration: "none",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "var(--color-pink-300)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "var(--color-pink-400)";
+                  }}
                 >
                   Hiring.fm
-                </h3>
+                </a>
                 <a
                   href="https://hiring.fm"
                   target="_blank"
@@ -602,7 +638,7 @@ export default function HairetsuCom() {
                       "var(--color-pink-600)";
                   }}
                 >
-                  hiring.fm →
+                  →
                 </a>
               </div>
               <p
