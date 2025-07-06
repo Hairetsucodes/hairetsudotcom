@@ -345,6 +345,8 @@ export default function HairetsuCom() {
                 />
               </div>
             </div>
+
+            {/* Hairetsu.com */}
           </div>
         </div>
       </section>
@@ -377,7 +379,7 @@ export default function HairetsuCom() {
                 ? "grid-cols-1"
                 : isTablet
                 ? "grid-cols-2"
-                : "grid-cols-2"
+                : "grid-cols-3"
             } ${isMobile ? "gap-4" : "gap-6"}`}
           >
             {/* Notate */}
@@ -482,12 +484,25 @@ export default function HairetsuCom() {
 
             {/* Decipher */}
             <div
-              className="p-4 sm:p-6 rounded-lg border"
+              className="p-4 sm:p-6 rounded-lg border relative"
               style={{
                 backgroundColor: "var(--taskbar-hover)",
                 borderColor: "var(--window-border)",
               }}
             >
+              <div className="absolute top-2 left-0 right-0 flex justify-center">
+                <span
+                  className="text-xs px-2 py-1 rounded-full"
+                  style={{
+                    backgroundColor: "var(--taskbar-text)",
+                    color: "var(--window-bg)",
+                    fontSize: "0.6rem",
+                    opacity: 0.7,
+                  }}
+                >
+                  Under Development
+                </span>
+              </div>
               <div className="flex items-center justify-between mb-2 sm:mb-3">
                 <a
                   href="https://decipher.hairetsu.com"
@@ -770,7 +785,105 @@ export default function HairetsuCom() {
                 </span>
               </div>
             </div>
-
+            <div
+              className="p-4 sm:p-6 rounded-lg border"
+              style={{
+                backgroundColor: "var(--taskbar-hover)",
+                borderColor: "var(--window-border)",
+              }}
+            >
+              <div className="flex items-center justify-between mb-2 sm:mb-3">
+                <a
+                  href="https://github.com/Hairetsucodes/hairetsudotcom"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-base sm:text-lg font-medium transition-colors hover:underline"
+                  style={{
+                    color: "var(--color-slate-400)",
+                    textDecoration: "none",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "var(--color-slate-300)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "var(--color-slate-400)";
+                  }}
+                >
+                  Hairetsu.com
+                </a>
+                <a
+                  href="https://github.com/Hairetsucodes/hairetsudotcom"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs px-2 py-1 rounded transition-colors"
+                  style={{
+                    backgroundColor: "var(--color-slate-600)",
+                    color: "white",
+                    textDecoration: "none",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor =
+                      "var(--color-slate-700)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor =
+                      "var(--color-slate-600)";
+                  }}
+                >
+                  →
+                </a>
+              </div>
+              <p
+                className="text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4"
+                style={{
+                  color: "var(--taskbar-text)",
+                  opacity: 0.8,
+                }}
+              >
+                A fully open-source web portfolio showcasing projects and
+                skills. Built with modern React patterns, responsive design, and
+                a unique desktop-style interface for an engaging user
+                experience.
+              </p>
+              <div className="flex flex-wrap gap-1 sm:gap-2">
+                <span
+                  className="px-2 py-1 text-xs rounded-full"
+                  style={{
+                    backgroundColor: "var(--color-blue-600)",
+                    color: "white",
+                  }}
+                >
+                  Next.js
+                </span>
+                <span
+                  className="px-2 py-1 text-xs rounded-full"
+                  style={{
+                    backgroundColor: "var(--color-blue-600)",
+                    color: "white",
+                  }}
+                >
+                  TypeScript
+                </span>
+                <span
+                  className="px-2 py-1 text-xs rounded-full"
+                  style={{
+                    backgroundColor: "var(--color-purple-600)",
+                    color: "white",
+                  }}
+                >
+                  React
+                </span>
+                <span
+                  className="px-2 py-1 text-xs rounded-full"
+                  style={{
+                    backgroundColor: "var(--color-green-600)",
+                    color: "white",
+                  }}
+                >
+                  Open Source
+                </span>
+              </div>
+            </div>
             {/* Vocals.dev */}
             <div
               className="p-4 sm:p-6 rounded-lg border relative"
@@ -783,9 +896,10 @@ export default function HairetsuCom() {
                 <span
                   className="text-xs px-2 py-1 rounded-full"
                   style={{
-                    backgroundColor: "var(--color-orange-600)",
-                    color: "white",
-                    fontSize: "0.65rem",
+                    backgroundColor: "var(--taskbar-text)",
+                    color: "var(--window-bg)",
+                    fontSize: "0.6rem",
+                    opacity: 0.7,
                   }}
                 >
                   Under Development
